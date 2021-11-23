@@ -8,19 +8,19 @@ pipeline{
           }
      stage("Maven Build"){
        steps{
-            sh "mvn clean package"
+	    sh "mvn clean package"
             sh "mv target/*.war target/myweb.war"
              }
             }
      stage("deploy-dev"){
        steps{
           sshagent(['tomcat-dev1']) {
-          sh """
+          sh "
           scp -o StrictHostKeyChecking=no target/myweb.war  
-          fis001s@192.168.0.162 /opt/apache-tomcat-8.5.73/webapps/
+          fis001s@192.168.0.162:/opt/apache-tomcat-8.5.73/webapps/
           ssh fis001s@192.168.0.162 /opt/apache-tomcat-8.5.73/bin/shutdown.sh
           ssh fis001s@192.168.0.162 /opt/apache-tomcat-8.5.73/bin/startup.sh
-           """
+           "
             }
           }
         }
