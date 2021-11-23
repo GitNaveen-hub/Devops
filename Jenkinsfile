@@ -12,7 +12,8 @@ pipeline{
              }
             }
     stage('SonarQube analysis') {
-    	withSonarQubeEnv('sonarqube') {
+	    steps {
+    		withSonarQubeEnv('sonarqube') {
      	 	sh 'mvn clean package sonar:sonar'
     		} // submitted SonarQube taskId is automatically attached to the pipeline context
   		}
