@@ -13,14 +13,9 @@ pipeline{
             }
      stage("deploy-dev"){
        steps{
-          sshagent(['tomcat-dev1']) {
-          sh """
-          scp -o StrictHostKeyChecking=no deployment-project/target/*.war  
-          fis001s@192.168.0.162:/opt/apache-tomcat-8.5.73/webapps/
-          ssh fis001s@192.168.0.162 /opt/apache-tomcat-8.5.73/bin/shutdown.sh
-          ssh fis001s@192.168.0.162 /opt/apache-tomcat-8.5.73/bin/startup.sh
-           """
-            }
+          sshagent(['0f32a7cf-2c58-452b-8b03-b9cfb2f59207']) {
+    		sh """ scp -o StrictHostKeyChecking=no target/*.war fis001s@192.168.0.162:/opt/apache-tomcat-8.5.73/webapps/ """
+		}
           }
         }
       }
