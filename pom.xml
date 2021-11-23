@@ -27,21 +27,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
-  <profiles>
-<profile>
-<id>sonar</id>
-<activation>
-<activeByDefault>true</activeByDefault>
-</activation>
-<properties>
-<!-- Optional URL to server. Default value is http://localhost:9000 -->
-<sonar.host.url>
-http://192.168.0.162:9000
-</sonar.host.url>
-</properties>
-</profile>
-</profiles>
 
   <build>
     <finalName>deployment-project</finalName>
