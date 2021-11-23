@@ -13,7 +13,7 @@ pipeline{
             }
       stage('SonarQube analysis') {
   	//  def scannerHome = tool 'SonarScanner 4.0';
-	      steps{
+	     steps{
     		withSonarQubeEnv('sonarqube-8.9.3') { 
 		// If you have configured more than one global server connection, you can specify its name
       		sh "mvn sonar:sonar"
