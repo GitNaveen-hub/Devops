@@ -6,17 +6,13 @@ pipeline{
             git credentialsId: 'github', url: 'https://github.com/GitNaveen-hub/Devops.git'
            }
           }
-    stage("Maven Build"){
-       steps{
-	    sh "mvn clean package"
-             }
-            }
-    stage('SonarQube analysis') {
-	    steps{
-    		withSonarQubeEnv('sonarqube') {
-     	 	sh 'mvn  sonar:sonar'
-    		} // submitted SonarQube taskId is automatically attached to the pipeline context
-  		}
+   stage("build & SonarQube analysis") {
+          node {
+              withSonarQubeEnv('sonarqube') {
+                 sh 'mvn clean package sonar:sonar'
+              }
+          }
+      }
 	
 	stage("deploy-dev"){
        		steps{
@@ -31,5 +27,5 @@ pipeline{
         }
       }
   }
-}
+
 
