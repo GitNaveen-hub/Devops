@@ -12,10 +12,11 @@ pipeline{
              }
             }
     stage('SonarQube analysis') {
-    		withSonarQubeEnv('sonarqube-8.9.3') {
-      		sh "mvn sonar:sonar"
-	    	}
-      		}
+    withSonarQubeEnv('sonarqube') {
+      sh 'mvn clean package sonar:sonar'
+    } // submitted SonarQube taskId is automatically attached to the pipeline context
+  }
+}
 	stage("deploy-dev"){
        		steps{
 			sshagent(['0f32a7cf-2c58-452b-8b03-b9cfb2f59207']) {
