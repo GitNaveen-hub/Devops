@@ -13,11 +13,12 @@ pipeline{
             }
       stage('SonarQube analysis') {
   	//  def scannerHome = tool 'SonarScanner 4.0';
-    	withSonarQubeEnv('sonarqube-8.9.3') { 
-	// If you have configured more than one global server connection, you can specify its name
-      	sh "mvn sonar:sonar"
-    }
-      }
+	      steps{
+    		withSonarQubeEnv('sonarqube-8.9.3') { 
+		// If you have configured more than one global server connection, you can specify its name
+      		sh "mvn sonar:sonar"
+	    	}
+      		}
 	  stage("deploy-dev"){
        		steps{
           	sshagent(['0f32a7cf-2c58-452b-8b03-b9cfb2f59207']) {
