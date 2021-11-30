@@ -18,7 +18,7 @@ pipeline{
                         credentialsId: 'nexus3', 
                         roupId: 'com.deployment.project', 
                         nexusUrl: '172.31.23.60:8081', 
-                        nexusVersion: 'nexus3', 
+                        nexusVersion: 'nexus', 
                         protocol: 'http', 
                         repository: 'deployment-project', 
                         version: '1.1-SNAPSHOT'
