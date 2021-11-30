@@ -15,7 +15,7 @@ pipeline{
                         file: 'target/deployment-project.war', 
                         type: 'war']
                         ], 
-                        credentialsId: 'nexus3', 
+                        credentialsId: 'nexus', 
                         roupId: 'com.deployment.project', 
                         nexusUrl: '172.31.23.60:8081', 
                         nexusVersion: 'nexus', 
