@@ -13,7 +13,8 @@ pipeline{
                         artifactId: 'deployment-project', 
                         classifier: '', 
                         file: 'target/deployment-project.war', 
-                        type: 'war']
+                        type: 'war'
+                          ]
                         ], 
                         credentialsId: 'nexus3', 
                         roupId: 'com.deployment.project', 
