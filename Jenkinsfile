@@ -1,11 +1,6 @@
 pipeline{
   agent any
   stages{
-    stage("Git Checkout"){
-      steps{
-            git credentialsId: 'github', url: 'https://github.com/GitNaveen-hub/Devops.git'
-           }
-          }
    stage("build & SonarQube analysis") {
           steps{
               withSonarQubeEnv('sonarqube') {
